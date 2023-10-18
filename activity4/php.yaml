@@ -3,6 +3,10 @@
   become: yes
   hosts: webserver
   tasks:
+    - name: fail back msg if the os is not in our palybook
+      ansible.builtin.fail:
+        msg: fail the playbook if the os is not ubuntu and "RedHat"
+      when: ansible_facts['os_family'] != "Debian" and ansible_facts['os_family'] != "RedHat"  
     - name: install apache and php
       ansible.builtin.apt:
         name:
