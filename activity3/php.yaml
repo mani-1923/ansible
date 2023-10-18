@@ -19,7 +19,7 @@
      - name: enable service 
        ansible.builtin.service:
          name: httpd
-         enable: yes
+         enabled: yes
          state: started
 
        
