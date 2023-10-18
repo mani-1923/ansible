@@ -8,22 +8,14 @@
         msg: fail the playbook if the os is not ubuntu and "RedHat"
       when: ansible_facts['os_family'] != "Debian" and ansible_facts['os_family'] != "RedHat"  
     - name: install apache and php
-      ansible.builtin.apt:
-        name:
-          - apache2
-          - php 
-          - libapache2-mod-php
-          - php-mysql
+      ansible.builtin.package:
+        name: "{{ all_packages  }}"
         state: present
         update_cache: yes
       when: ansible_facts['os_family'] == "Debian"
     - name: install apache and php
-      ansible.builtin.dnf:
-        name:
-          - httpd
-          - php 
-          - php-cli
-          - php-common
+      ansible.builtin.package:
+        name: "{{ all_packages }}"
         state: present
         update_cache: yes
       when: ansible_facts['os_family'] == "RedHat"
@@ -33,7 +25,7 @@
         dest: /var/www/html/info.php
     - name: enable service 
       ansible.builtin.service:
-        name: httpd
+        name: "{{ package_name }}"
         enabled: yes
         state: started
       when: ansible_facts['os_family'] == "RedHat"
