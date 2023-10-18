@@ -6,7 +6,7 @@
      - name: install apache and php
        ansible.builtin.dnf:
          name:
-          - apache2
+          - httpd
           - php 
           - libapache2-mod-php
           - php-mysql
