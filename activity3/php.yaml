@@ -14,7 +14,12 @@
          update_cache: yes
      - name: copy php file into server2
        ansible.builtin.copy:
-         src: ./info.php
+         src: info.php
          dest: /var/www/html/info.php
+     - name: enable service 
+       ansible.builtin.service:
+         name: httpd
+         enable: yes
+         state: started
 
        
