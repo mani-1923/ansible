@@ -1,0 +1,20 @@
+---
+ - name: install apache and php
+   become: yes
+   hosts:
+   tasks:
+     - name: install apache and php
+       ansible.builtin.dnf:
+         name:
+          - apache2
+          - php 
+          - libapache2-mod-php
+          - php-mysql
+         state: present
+         update_cache: yes
+     - name: copy php file into server2
+       ansible.builtin.copy:
+         src: info.php
+         dest: /var/www/html/info.php
+
+       
