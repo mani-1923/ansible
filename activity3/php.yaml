@@ -8,8 +8,8 @@
          name:
           - httpd
           - php 
-          - libapache2-mod-php
-          - php-mysql
+          - php-cli
+          - php-common
          state: present
          update_cache: yes
      - name: copy php file into server2
