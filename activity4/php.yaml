@@ -15,7 +15,7 @@
         name: "{{ item }}"
         state: present
         update_cache: yes
-      loop: "{{ all_packages }}""
+      loop: "{{ all_packages }}"
     - name: copy php file into server2
       ansible.builtin.copy:
         src: info.php
