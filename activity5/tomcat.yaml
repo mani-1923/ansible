@@ -3,8 +3,6 @@
   become: yes
   hosts: all
   vars: 
-  user_name: tomcat
-  group_name: tomcat
   java_version: "11"
   homedir: /opt/tomcat
   MAJOR_VERSION: "10"
@@ -21,8 +19,8 @@
         state: present 
     - name: add tomcat user with group tomcat
       ansible.builtin.user:
-      name: "{{ user_name }}"
-      group: "{{ group_name }}"
+      name: tomcat
+      group: tomcat
       shell: /bin/false
     - name: download tomcat 
       ansible.builtin.get_url:
@@ -30,7 +28,7 @@
         dest: "/tmp"
     - name: ceate directory
       ansible.builtin.file:
-        path: "{{ homedir }}"
+        path: tomcat
         state: directory
     - name: extract files into remote hosts
       ansible.builtin.unarchive:
