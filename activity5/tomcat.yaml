@@ -10,7 +10,7 @@
   tasks:
     - name: install java 11
       ansible.builtin.apt:
-        name: opnejdk-{{" java_version "}}-jdk
+        name: "opnejdk-{{ java_version }}-jdk"
         state: present
         update_cache: yes
     - name: create tomcat group
