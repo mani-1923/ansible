@@ -11,25 +11,11 @@
       ansible.builtin.debug:
         var: all_packages    
     - name: install apache and php
-      ansible.builtin.apt:
-        name: 
-          - apache2
-          - php 
-          - libapache2-mod-php
-          - php-mysql
+      ansible.builtin.package:
+        name: "{{ item }}"
         state: present
         update_cache: yes
-      when: ansible_facts['os_family'] == "Debian"
-    - name: install apache and php
-      ansible.builtin.dnf:
-        name:
-          - httpd
-          - php 
-          - php-cli
-          - php-common 
-        state: present
-        update_cache: yes
-      when: ansible_facts['os_family'] == "RedHat"
+      loop: "{{ all_packages }}""
     - name: copy php file into server2
       ansible.builtin.copy:
         src: info.php
@@ -39,4 +25,4 @@
         name: httpd
         enabled: yes
         state: started
-      when: ansible_facts['os_family'] == "RedHat"
+    
