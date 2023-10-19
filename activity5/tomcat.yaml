@@ -1,0 +1,42 @@
+---
+- name: install tomcat
+  become: yes
+  hosts: all
+  vars: 
+  user_name: tomcat
+  group_name: tomcat
+  java_version: "11"
+  homedir: /opt/tomcat
+  MAJOR_VERSION: "10"
+  VERSION: "10.1.14"
+  tasks:
+    - name: install java 11
+      ansible.builtin.apt:
+        name: opnejdk-{{" java_version "}}-jdk
+        state: present
+        update_cache: yes
+    - name: create tomcat group
+      ansible.builtin.group:
+        name: tomcat
+        state: present 
+    - name: add tomcat user with group tomcat
+      ansible.builtin.user:
+      name: "{{ user_name }}"
+      group: "{{ group_name }}"
+      shell: /bin/false
+    - name: download tomcat 
+      ansible.builtin.get_url:
+        url: "https://dlcdn.apache.org/tomcat/tomcat-${MAJOR_VERSION}/v${VERSION}/bin/apache-tomcat-${VERSION}.tar.gz"
+        dest: "/tmp"
+    - name: ceate directory
+      ansible.builtin.file:
+        path: "{{ homedir }}"
+        state: directory
+    - name: extract files into remote hosts
+      ansible.builtin.unarchive:
+        src: "/tmp"
+        dest: "{{ homedir }}"
+
+              
+      
+      
