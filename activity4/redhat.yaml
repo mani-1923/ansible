@@ -1,7 +1,0 @@
----
-all_packages:
-  - httpd
-  - php 
-  - php-cli
-  - php-common
-package_name: httpd
