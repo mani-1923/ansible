@@ -3,14 +3,14 @@
   become: yes
   hosts: all
   vars: 
-  java_version: "11"
+  java-version: "11"
   homedir: /opt/tomcat
   MAJOR_VERSION: "10"
   VERSION: "10.1.14"
   tasks:
     - name: install java 11
       ansible.builtin.apt:
-        name: opnejdk-{{" java_version "}}-jdk
+        name: opnejdk-{{" java-version "}}-jdk
         state: present
         update_cache: yes
     - name: create tomcat group
@@ -24,7 +24,7 @@
       shell: /bin/false
     - name: download tomcat 
       ansible.builtin.get_url:
-        url: "https://dlcdn.apache.org/tomcat/tomcat-${MAJOR_VERSION}/v${VERSION}/bin/apache-tomcat-${VERSION}.tar.gz"
+        url: "https://dlcdn.apache.org/tomcat/tomcat-${{MAJOR_VERSION}}/v${{VERSION}}/bin/apache-tomcat-${{VERSION}}.tar.gz"
         dest: "/tmp"
     - name: ceate directory
       ansible.builtin.file:
