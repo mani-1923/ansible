@@ -19,9 +19,9 @@
         state: present 
     - name: add tomcat user 
       ansible.builtin.user:
-      name: tomcat
-      group: tomcat
-      shell: /bin/false
+        name: tomcat
+        group: tomcat
+        shell: /bin/false
     - name: download tomcat 
       ansible.builtin.get_url:
         url: "https://dlcdn.apache.org/tomcat/tomcat-${{MAJOR_VERSION}}/v${{VERSION}}/bin/apache-tomcat-${{VERSION}}.tar.gz"
