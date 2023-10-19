@@ -17,7 +17,7 @@
       ansible.builtin.group:
         name: tomcat
         state: present 
-    - name: add tomcat user with group tomcat
+    - name: add tomcat user 
       ansible.builtin.user:
       name: tomcat
       group: tomcat
