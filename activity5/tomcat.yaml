@@ -44,6 +44,9 @@
         path: "{{ homedir }}"
         owner: tomcat
         group: tomcat
+    - name: get all the shell files
+      ansible.builtin.command: sudo sh -c 'ls /opt/tomcat/latest/bin/*.sh'
+      register: shell_files
     - name: template for service file
       ansible.builtin.copy:
         src: /template/service.j2
@@ -51,9 +54,7 @@
         owner: tomcat
         group: tomcat
         remote_src: yes
-    - name: make the scrips executable
-      command: sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
-
+    
     
 
               
