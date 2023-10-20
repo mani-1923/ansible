@@ -44,16 +44,31 @@
         path: "{{ homedir }}"
         owner: tomcat
         group: tomcat
-    - name: get all the shell files
-      ansible.builtin.command: ls /opt/tomcat/latest/bin/*.sh
-      become: yes
+        recurse: yes
+    # - name: get all the shell files
+    #   ansible.builtin.command: ls /opt/tomcat/latest/bin/*.sh
+    #   become: yes
     - name: template for service file
-      ansible.builtin.copy:
-        src: /template/service.j2
+      ansible.builtin.template:
+        src: template/service.j2
         dest  : /etc/systemd/system/tomcat.service
-        owner: tomcat
-        group: tomcat
-        remote_src: yes
+    - name: deamon reload
+      ansible.builtin.systemd:
+        daemon_reload: yes
+    - name: start service tomcat
+      ansible.builtin.service:
+        name: tomcat
+        state: started
+        enabled: yes
+    - name: check the status
+      ansible.builtin.command: systemctl status tomcat
+      register: myoutput
+
+    - name: debug
+      ansible.builtin.debug:
+        var: myoutput.stdout_lines
+      
+        
     
     
 
