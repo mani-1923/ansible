@@ -5,7 +5,6 @@
   vars: 
     java_version: "11"
     homedir: /opt/tomcat
-    MAJOR_VERSION: "10"
     VERSION: "10.1.14"
   tasks:
     - name: install java 11
@@ -24,7 +23,7 @@
         shell: /bin/false
     - name: download tomcat 
       ansible.builtin.get_url:
-        url: "https://dlcdn.apache.org/tomcat/tomcat-${{MAJOR_VERSION}}/v${{VERSION}}/bin/apache-tomcat-${{VERSION}}.tar.gz"
+        url: "https://downloads.apache.org/tomcat/tomcat-10/v${VERSION}/bin/apache-tomcat-${VERSION}.tar.gz"
         dest: "/tmp/apache-tomcat-${{VERSION}}.tar.gz"
     - name: ceate directory
       ansible.builtin.file:
