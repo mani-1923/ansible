@@ -44,6 +44,11 @@
         path: "{{ homedir }}"
         owner: tomcat
         group: tomcat
+    - name: template for service file
+      src: /template/service.j2
+      dest: /etc/systemd/system/tomcat.service
+      owner: tomcat
+      group: tomcat
     - name: make the scrips executable
       command: sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
 
