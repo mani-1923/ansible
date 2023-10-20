@@ -50,7 +50,7 @@
       ansible.builtin.command: sudo chown -R tomcat /opt/tomcat
 
     - name: user execute permission
-      ansible.builtin.command: sudo chmod -R u+x /opt/tomcat/bin
+      ansible.builtin.command: sudo chmod -R u+x /opt/tomcat/apache-tomcat-10.1.14/bin
 
          
       
