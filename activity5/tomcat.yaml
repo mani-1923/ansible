@@ -31,7 +31,7 @@
         state: directory
     - name: extract files into remote hosts
       ansible.builtin.unarchive:
-        src: "/tmp"
+        src: "/tmp/apache-tomcat-{{VERSION}}.tar.gz"
         dest: "{{ homedir }}"
 
               
