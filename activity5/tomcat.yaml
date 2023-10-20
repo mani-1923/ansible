@@ -46,19 +46,13 @@
         group: tomcat
         state: directory
 
-    - name: Check if Tomcat bin directory exists
-      stat:
-        path: /opt/tomcat/latest/bin
-      register: tomcat_bin_dir
+    - name: access to the /opt/tomcat
+      ansible.builtin.command: sudo chown -R tomcat: /opt/tomcat
 
-    - name: Check if .sh files exist in the Tomcat bin directory
-      find:
-        paths: /opt/tomcat/latest/bin
-        patterns: "*.sh"
-      register: sh_file    
+         
       
     - name: make .sh files executable
-      ansible.builtin.command: sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
+      ansible.builtin.command: sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
     
     - name: template for service file
       ansible.builtin.template:
