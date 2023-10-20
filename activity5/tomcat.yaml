@@ -39,6 +39,15 @@
         src: "{{ homedir }}"
         dest: /opt/tomcat/latest
         state: link
+    - name: give ownership to the files
+      ansible.builtin.file:
+        path: "{{ homedir }}"
+        owner: tomcat
+        group: tomcat
+    - name: make the scrips executable
+      command: chmod +x /opt/tomcat/latest/bin/*.sh
+
+    
 
               
       
