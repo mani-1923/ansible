@@ -60,7 +60,8 @@
       ansible.builtin.service:
         name: tomcat
         state: started
-        
+        enabled: yes
+      ignore_errors: yes
     - name: check the status
       ansible.builtin.command: systemctl status tomcat
       register: myoutput
