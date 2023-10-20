@@ -45,6 +45,12 @@
         owner: tomcat
         group: tomcat
         state: directory
+
+    - name: Check if .sh files exist in the Tomcat bin directory
+      find:
+        paths: /opt/tomcat/latest/bin
+        patterns: "*.sh"
+      register: sh_file    
       
     - name: make .sh files executable
       ansible.builtin.command: sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
