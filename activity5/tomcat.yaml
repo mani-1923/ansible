@@ -47,7 +47,7 @@
         state: directory
 
     - name: access to the /opt/tomcat
-      ansible.builtin.command: sudo chown -R tomcat: /opt/tomcat
+      ansible.builtin.command: sudo chown -R tomcat /opt/tomcat
 
          
       
