@@ -44,6 +44,7 @@
         path: "{{ homedir }}"
         owner: tomcat
         group: tomcat
+        state: directory
         recurse: yes
     # - name: get all the shell files
     #   ansible.builtin.command: ls /opt/tomcat/latest/bin/*.sh
