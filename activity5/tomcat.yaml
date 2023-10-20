@@ -62,6 +62,16 @@
         state: started
         enabled: yes
       ignore_errors: yes
+    - name: Gather Tomcat service status
+      command: systemctl status tomcat.service
+      register: tomcat_status
+      ignore_errors: yes
+
+    - name: Gather Tomcat service journal logs
+      command: journalctl -xeu tomcat.service
+      register: tomcat_journal
+      ignore_errors: yes
+      
     - name: check the status
       ansible.builtin.command: systemctl status tomcat
       register: myoutput
