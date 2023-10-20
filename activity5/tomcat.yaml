@@ -27,7 +27,7 @@
         dest: "/tmp/apache-tomcat-{{VERSION}}.tar.gz"
     - name: ceate directory
       ansible.builtin.file:
-        path: tomcat
+        path: "{{ homedir }}"
         state: directory
     - name: extract files into remote hosts
       ansible.builtin.unarchive:
