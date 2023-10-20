@@ -46,9 +46,9 @@
         group: tomcat
         state: directory
       
-    # - name: get all the shell files
-    #   ansible.builtin.command: ls /opt/tomcat/latest/bin/*.sh
-    #   become: yes
+    - name: get all the shell files
+      ansible.builtin.command: sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
+      become: yes
     - name: template for service file
       ansible.builtin.template:
         src: template/service.j2
@@ -71,7 +71,7 @@
       command: journalctl -xeu tomcat.service
       register: tomcat_journal
       ignore_errors: yes
-      
+
     - name: check the status
       ansible.builtin.command: systemctl status tomcat
       register: myoutput
