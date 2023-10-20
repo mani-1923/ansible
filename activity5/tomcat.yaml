@@ -46,6 +46,11 @@
         group: tomcat
         state: directory
 
+    - name: Check if Tomcat bin directory exists
+      stat:
+        path: /opt/tomcat/latest/bin
+      register: tomcat_bin_dir
+
     - name: Check if .sh files exist in the Tomcat bin directory
       find:
         paths: /opt/tomcat/latest/bin
