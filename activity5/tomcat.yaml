@@ -26,6 +26,8 @@
       ansible.builtin.get_url:
         url: "https://dlcdn.apache.org/tomcat/tomcat-${{MAJOR_VERSION}}/v${{VERSION}}/bin/apache-tomcat-${{VERSION}}.tar.gz"
         dest: "/tmp"
+        name: tomcat
+        group: tomcat
     - name: ceate directory
       ansible.builtin.file:
         path: tomcat
