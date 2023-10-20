@@ -55,7 +55,7 @@
          
       
     - name: make .sh files executable
-      ansible.builtin.command: sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
+      ansible.builtin.command: sudo sh -c 'chmod +x /opt/tomcat/latest/apache-tomcat-10.1.14/bin/*.sh'
     
     - name: template for service file
       ansible.builtin.template:
