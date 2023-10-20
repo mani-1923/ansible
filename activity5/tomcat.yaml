@@ -49,6 +49,9 @@
     - name: access to the /opt/tomcat
       ansible.builtin.command: sudo chown -R tomcat /opt/tomcat
 
+    - name: user execute permission
+      ansible.builtin.command: sudo chmod -R u+x /opt/tomcat/bin
+
          
       
     - name: make .sh files executable
