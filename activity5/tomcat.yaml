@@ -45,7 +45,7 @@
         owner: tomcat
         group: tomcat
     - name: make the scrips executable
-      command: sudo sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh
+      command: sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh
 
     
 
