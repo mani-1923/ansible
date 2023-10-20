@@ -50,6 +50,7 @@
         dest  : /etc/systemd/system/tomcat.service
         owner: tomcat
         group: tomcat
+        remote_src: yes
     - name: make the scrips executable
       command: sh -c 'chmod +x /opt/tomcat/latest/bin/*.sh'
 
