@@ -69,11 +69,11 @@
         name: tomcat
         state: started
         enabled: yes
-      ignore_errors: yes
+      
     - name: Gather Tomcat service status
       command: systemctl status tomcat.service
       register: tomcat_status
-      ignore_errors: yes
+      
 
     - name: Gather Tomcat service journal logs
       command: journalctl -xeu tomcat.service
