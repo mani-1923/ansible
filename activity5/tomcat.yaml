@@ -64,6 +64,13 @@
     - name: deamon reload
       ansible.builtin.systemd:
         daemon_reload: yes
+    - name: Use the find module to list files and directories
+      find:
+        paths: /opt/tomcat/latest/apache-tomcat-10.1.14/bin/*.sh'
+        recurse: yes
+      register: find_output
+    - debug:
+        var: find_output.files
     - name: start service tomcat
       ansible.builtin.service:
         name: tomcat
