@@ -4,7 +4,7 @@
   hosts: all
   vars: 
     java_version: "11"
-    homedir: /opt/tomcat
+    homedir: /opt/tomcat/apache-tomcat-10.1.14
     VERSION: "10.1.14"
   tasks:
     - name: install java 11
